@@ -4,9 +4,12 @@ export const CartItemContainer = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 15px;
-
+  border: solid 1px #ccc;
   p {
     color: #222222;
+  }
+  svg {
+    color: #222;
   }
 `;
 
