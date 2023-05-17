@@ -21,13 +21,13 @@ const ProductItem = ({ product }) => {
     <Styles.ProductContainer>
       <Styles.ProductImage imageUrl={product.imageUrl}>
         <CustomButton startIcon={<BsCartPlus />} onClick={handleProductClick}>
-          Adicionar ao carrinho
+          Add to Cart
         </CustomButton>
       </Styles.ProductImage>
 
       <Styles.ProductInfo>
         <p>{product.name}</p>
-        <p>R${product.price}</p>
+        <p>${product.price}</p>
       </Styles.ProductInfo>
     </Styles.ProductContainer>
   );

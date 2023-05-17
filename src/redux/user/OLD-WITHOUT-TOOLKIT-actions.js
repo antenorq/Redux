@@ -1,4 +1,4 @@
-import userActionTypes from "./OLD-actiontypes";
+import userActionTypes from "./OLD-WITHOUT-TOOLKIT-actiontypes";
 
 export const login = (payload) => ({
   type: userActionTypes.LOGIN,

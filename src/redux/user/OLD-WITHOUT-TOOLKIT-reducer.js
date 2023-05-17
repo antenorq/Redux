@@ -1,4 +1,4 @@
-import userActionTypes from "./OLD-actiontypes";
+import userActionTypes from "./OLD-WITHOUT-TOOLKIT-actiontypes";
 
 const initialState = {
   currentUser: null,

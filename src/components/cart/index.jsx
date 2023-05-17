@@ -12,7 +12,7 @@ const Cart = ({ isVisible, setIsVisible }) => {
     <Styles.CartContainer isVisible={isVisible}>
       <Styles.CartEscapeArea onClick={handleEscapeAreaClick} />
       <Styles.CartContent>
-        <Styles.CartTitle>Seu Carrinho</Styles.CartTitle>
+        <Styles.CartTitle>Your Cart</Styles.CartTitle>
         {products.map((product, index) => (
           <CartItem key={index} product={product} />
         ))}
