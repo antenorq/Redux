@@ -46,28 +46,12 @@ const cartReducer = (state = initialState, action) => {
     case CartActionTypes.INCREASE_QUANTITY_PRODUCT:
       return {
         ...state,
-        // products: state.products.map((product) =>
-        //   product.id === action.payload.id
-        //     ? { ...product, quantity: product.quantity + 1 }
-        //     : product
-        // ),
-        // productsTotalCount: state.productsTotalCount + 1,
-
-        // const index = products.findIndex(
-        //   (item) => item.id === productToUpdate.id
-        // );
-        // const list_products = [...products];
-
-        // list_products[index] = productToUpdate;
-
-        products: () => {
-          const index = state.products.findIndex(
-            (product) => product.id === action.payload.id
-          );
-          const product_increased = state.products[index].quantity + 1;
-          return [...state.products, product_increased];
-        },
-        productsTotalCount: state.productsTotalCount - 1,
+        products: state.products.map((product) =>
+          product.id === action.payload.id
+            ? { ...product, quantity: product.quantity + 1 }
+            : product
+        ),
+        productsTotalCount: state.productsTotalCount + 1,
       };
 
     default:
