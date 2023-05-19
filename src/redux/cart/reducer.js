@@ -24,6 +24,7 @@ const cartReducer = (state = initialState, action) => {
               : product
           ),
           productsTotalCount: state.productsTotalCount + 1,
+          productsTotalPrice: state.productsTotalPrice + action.payload.price,
         };
       } else {
         //if does not have this product into the car add it
@@ -31,6 +32,7 @@ const cartReducer = (state = initialState, action) => {
           ...state,
           products: [...state.products, { ...action.payload, quantity: 1 }],
           productsTotalCount: state.productsTotalCount + 1,
+          productsTotalPrice: state.productsTotalPrice + action.payload.price,
         };
       }
 
@@ -41,6 +43,9 @@ const cartReducer = (state = initialState, action) => {
           (product) => product.id !== action.payload.id
         ),
         productsTotalCount: state.productsTotalCount - action.payload.quantity,
+        productsTotalPrice:
+          state.productsTotalPrice -
+          action.payload.quantity * action.payload.price,
       };
 
     case CartActionTypes.INCREASE_QUANTITY_PRODUCT:
@@ -52,6 +57,21 @@ const cartReducer = (state = initialState, action) => {
             : product
         ),
         productsTotalCount: state.productsTotalCount + 1,
+        productsTotalPrice: state.productsTotalPrice + action.payload.price,
+      };
+
+    case CartActionTypes.DECREASE_QUANTITY_PRODUCT:
+      return {
+        ...state,
+        products: state.products
+          .map((product) =>
+            product.id === action.payload.id
+              ? { ...product, quantity: product.quantity - 1 }
+              : product
+          )
+          .filter((product) => product.quantity > 0),
+        productsTotalCount: state.productsTotalCount - 1,
+        productsTotalPrice: state.productsTotalPrice - action.payload.price,
       };
 
     default:

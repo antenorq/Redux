@@ -7,6 +7,9 @@ const Cart = ({ isVisible, setIsVisible }) => {
   const handleEscapeAreaClick = () => setIsVisible(false);
 
   const { products } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const { productsTotalPrice } = useSelector(
+    (rootReducer) => rootReducer.cartReducer
+  );
 
   return (
     <Styles.CartContainer isVisible={isVisible}>
@@ -16,6 +19,7 @@ const Cart = ({ isVisible, setIsVisible }) => {
         {products.map((product, index) => (
           <CartItem key={index} product={product} />
         ))}
+        <div style={{ color: "#000" }}>TOTAL CART: ${productsTotalPrice}</div>
       </Styles.CartContent>
     </Styles.CartContainer>
   );
