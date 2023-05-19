@@ -1,10 +1,17 @@
 import { AiOutlinePlus, AiOutlineMinus, AiOutlineClose } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+
+// import {
+//   removeProductFromCart,
+//   increaseQuantityProduct,
+//   decreaseQuantityProduct,
+// } from "../../redux/cart/OLD-WITHOUT-TOOLKIT-actions";
+
 import {
-  removeProductFromCart,
-  increaseQuantityProduct,
-  decreaseQuantityProduct,
-} from "../../redux/cart/actions";
+  REMOVE_PRODUCT,
+  INCREASE_QUANTITY_PRODUCT,
+  DECREASE_QUANTITY_PRODUCT,
+} from "../../redux/cart/slice";
 
 // Styles
 import * as Styles from "./styles";
@@ -13,15 +20,15 @@ const CartItem = ({ product }) => {
   const dispath = useDispatch();
 
   const handleRemoveClick = () => {
-    dispath(removeProductFromCart(product));
+    dispath(REMOVE_PRODUCT(product));
   };
 
   const handleIncreaseClick = () => {
-    dispath(increaseQuantityProduct(product));
+    dispath(INCREASE_QUANTITY_PRODUCT(product));
   };
 
   const handleDecreaseClick = () => {
-    dispath(decreaseQuantityProduct(product));
+    dispath(DECREASE_QUANTITY_PRODUCT(product));
   };
 
   return (
