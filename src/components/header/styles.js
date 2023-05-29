@@ -13,6 +13,11 @@ export const Container = styled.div`
 export const Logo = styled.div`
   font-size: 1.25rem;
   font-weight: bold;
+  color: #fff;
+
+  a:hover {
+    color: #fff;
+  }
 `;
 
 export const Buttons = styled.div`
