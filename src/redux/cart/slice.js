@@ -4,12 +4,17 @@ const initialState = {
   products: [],
   productsTotalPrice: 0,
   productsTotalCount: 0,
+  cartIsVisible: false,
 };
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    OPEN_CART: (state, action) => {
+      state.cartIsVisible = action.payload;
+    },
+
     ADD_PRODUCT: (state, action) => {
       //check if this product is already into the cart
       const productIsAlreadyInCart = state.products.some(
@@ -78,6 +83,7 @@ export const {
   REMOVE_PRODUCT,
   INCREASE_QUANTITY_PRODUCT,
   DECREASE_QUANTITY_PRODUCT,
+  OPEN_CART,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

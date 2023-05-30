@@ -5,6 +5,7 @@ export const CartContainer = styled.div`
   height: 100%;
   width: 100%;
   right: 0;
+  z-index: 9999999;
   bottom: 0;
   top: 0;
   left: 0;

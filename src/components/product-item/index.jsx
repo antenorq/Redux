@@ -1,12 +1,11 @@
 import { BsCartPlus } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 
-// Components
-import CustomButton from "../custom-button/index";
+import { ADD_PRODUCT, OPEN_CART } from "../../redux/cart/slice";
 
-// Styles
-import * as Styles from "./styles";
-import { ADD_PRODUCT } from "../../redux/cart/slice";
+//bootstrap
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 // Utilities
 
@@ -15,21 +14,19 @@ const ProductItem = ({ product }) => {
 
   const handleProductClick = () => {
     dispatch(ADD_PRODUCT(product));
+    dispatch(OPEN_CART(true));
   };
 
   return (
-    <Styles.ProductContainer>
-      <Styles.ProductImage imageUrl={product.imageUrl}>
-        <CustomButton startIcon={<BsCartPlus />} onClick={handleProductClick}>
-          Add to Cart
-        </CustomButton>
-      </Styles.ProductImage>
-
-      <Styles.ProductInfo>
-        <p>{product.name}</p>
-        <p>${product.price}</p>
-      </Styles.ProductInfo>
-    </Styles.ProductContainer>
+    <Card>
+      <Card.Img variant="top" src={product.imageUrl} />
+      <Card.Body>
+        <Card.Title>{product.name}</Card.Title>
+        <Button variant="primary" onClick={handleProductClick}>
+          <BsCartPlus /> Add do Cart
+        </Button>
+      </Card.Body>
+    </Card>
   );
 };
 

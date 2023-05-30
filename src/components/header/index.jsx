@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../../redux/user/slice";
+import { OPEN_CART } from "../../redux/cart/slice";
 // OLD WITHOUT TOOLKIT import { login, logout } from "../../redux/user/actions";
 
 //Bootstrap
@@ -18,9 +18,12 @@ import Cart from "../cart/index";
 //import * as Styles from "./styles";
 
 function Header() {
-  const [cartIsVisible, setCartIsVisible] = useState(false);
+  //const [cartIsVisible, setCartIsVisible] = useState(false);
 
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+  const { cartIsVisible } = useSelector(
+    (rootReducer) => rootReducer.cartReducer
+  );
   const { productsTotalCount } = useSelector(
     (rootReducer) => rootReducer.cartReducer
   );
@@ -36,7 +39,7 @@ function Header() {
   };
 
   const handleCartClick = () => {
-    setCartIsVisible(true);
+    dispatch(OPEN_CART(true));
   };
 
   const expand = "md";
@@ -84,15 +87,12 @@ function Header() {
                   aria-label="Search"
                 />
                 <Button variant="success">Search</Button>
-                <Cart
-                  isVisible={cartIsVisible}
-                  setIsVisible={setCartIsVisible}
-                />
               </Form>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+      <Cart isVisible={cartIsVisible} />
     </>
   );
 

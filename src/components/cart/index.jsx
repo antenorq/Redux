@@ -1,13 +1,19 @@
 // Styles
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import * as Styles from "./styles";
 import CartItem from "../cart-item";
 
-const Cart = ({ isVisible, setIsVisible }) => {
-  const handleEscapeAreaClick = () => setIsVisible(false);
+import { OPEN_CART } from "../../redux/cart/slice";
+
+const Cart = ({ isVisible }) => {
+  const dispatch = useDispatch();
+  const handleEscapeAreaClick = () => {
+    dispatch(OPEN_CART(false));
+  };
 
   const { products } = useSelector((rootReducer) => rootReducer.cartReducer);
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
+
   const { productsTotalPrice } = useSelector(
     (rootReducer) => rootReducer.cartReducer
   );
