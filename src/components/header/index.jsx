@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login, logout } from "../../redux/user/slice";
+import { logout } from "../../redux/user/slice";
 import { OPEN_CART } from "../../redux/cart/slice";
 // OLD WITHOUT TOOLKIT import { login, logout } from "../../redux/user/actions";
 
@@ -13,12 +14,12 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 
 // Components
 import Cart from "../cart/index";
-
-// Styles
-//import * as Styles from "./styles";
+import LoginModal from "../LoginModal";
 
 function Header() {
-  //const [cartIsVisible, setCartIsVisible] = useState(false);
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const { currentUser } = useSelector((rootReducer) => rootReducer.userReducer);
   const { cartIsVisible } = useSelector(
@@ -29,10 +30,6 @@ function Header() {
   );
 
   const dispatch = useDispatch();
-
-  const handleLoginClick = () => {
-    dispatch(login({ name: "antenor", email: "antenor@gmail.com" }));
-  };
 
   const handleLogoutClick = () => {
     dispatch(logout());
@@ -73,7 +70,7 @@ function Header() {
                     Sair ({currentUser.name})
                   </Nav.Link>
                 ) : (
-                  <Nav.Link onClick={handleLoginClick}>Login</Nav.Link>
+                  <Nav.Link onClick={handleShow}>Login</Nav.Link>
                 )}
                 <Nav.Link onClick={handleCartClick}>
                   Cart ({productsTotalCount})
@@ -92,30 +89,11 @@ function Header() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Cart isVisible={cartIsVisible} />
+
+      <Cart handleShow={handleShow} isVisible={cartIsVisible} />
+      <LoginModal show={show} handleClose={handleClose} />
     </>
   );
-
-  /*
-  return (
-    <Styles.Container>
-      <Styles.Logo>
-        <a href="/">Redux Shopping</a>
-      </Styles.Logo>
-      <Styles.Buttons>
-        {currentUser ? (
-          <div onClick={handleLogoutClick}>Sair ({currentUser.name})</div>
-        ) : (
-          <div onClick={handleLoginClick}>Login</div>
-        )}
-
-        <div onClick={handleCartClick}>Cart ({productsTotalCount})</div>
-      </Styles.Buttons>
-
-      <Cart isVisible={cartIsVisible} setIsVisible={setCartIsVisible} />
-    </Styles.Container>
-  );
-  */
 }
 
 export default Header;

@@ -18,10 +18,18 @@ const ProductItem = ({ product }) => {
   };
 
   return (
-    <Card>
+    <Card className="mb-3">
       <Card.Img variant="top" src={product.imageUrl} />
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
+      <Card.Body
+        style={{
+          marginTop: "-100px",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          color: "#fff",
+        }}
+      >
+        <Card.Title>
+          {product.name} - ${product.price}
+        </Card.Title>
         <Button variant="primary" onClick={handleProductClick}>
           <BsCartPlus /> Add do Cart
         </Button>

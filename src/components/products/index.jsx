@@ -14,14 +14,8 @@ const Products = () => {
       <Container>
         <Row>
           {products.map((product, index) => (
-            <Col
-              align="center"
-              sm={12}
-              md={6}
-              lg={3}
-              // style={{ border: "solid 1px #000" }}
-            >
-              <ProductItem key={index} product={product} />
+            <Col key={index} align="center" sm={12} md={6} lg={3}>
+              <ProductItem product={product} />
             </Col>
           ))}
         </Row>
