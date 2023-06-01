@@ -67,13 +67,15 @@ function Header() {
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 {currentUser ? (
                   <Nav.Link onClick={handleLogoutClick}>
-                    Sair ({currentUser.name})
+                    <Button variant="success">Sair ({currentUser.name})</Button>
                   </Nav.Link>
                 ) : (
-                  <Nav.Link onClick={handleShow}>Login</Nav.Link>
+                  <Nav.Link onClick={handleShow}>
+                    <Button variant="success">Login</Button>
+                  </Nav.Link>
                 )}
                 <Nav.Link onClick={handleCartClick}>
-                  Cart ({productsTotalCount})
+                  <Button variant="success">Cart ({productsTotalCount})</Button>
                 </Nav.Link>
               </Nav>
               <Form className="d-flex">

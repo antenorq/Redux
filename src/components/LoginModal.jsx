@@ -14,7 +14,7 @@ function LoginModal({ show, handleClose }) {
   const dispatch = useDispatch();
 
   const handleLoginClick = () => {
-    dispatch(login({ name: "User test", email: "test@gmail.com" }));
+    dispatch(login({ name: "Test", email: "test@test.com" }));
     handleClose();
   };
 
@@ -22,7 +22,12 @@ function LoginModal({ show, handleClose }) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>LOGIN</Modal.Title>
+          <Modal.Title>
+            LOGIN TEST -{" "}
+            <span style={{ fontSize: "15px" }}>
+              (test@test.com - password=123456)
+            </span>
+          </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
