@@ -41,12 +41,6 @@ const Cart = ({ handleShow, isVisible }) => {
         <Button variant="primary" onClick={handleCheckout}>
           <BsCartPlus /> Proceed To Checkout
         </Button>
-
-        <div className={"mt-3"}>
-          This is a Test React App using Redux-Toolkit.
-          <br />
-          The checkout button will not work as checkout.
-        </div>
       </Styles.CartContent>
     </Styles.CartContainer>
   );

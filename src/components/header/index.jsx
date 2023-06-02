@@ -60,7 +60,7 @@ function Header() {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                Offcanvas
+                Menu
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
@@ -78,15 +78,19 @@ function Header() {
                   <Button variant="success">Cart ({productsTotalCount})</Button>
                 </Nav.Link>
               </Nav>
-              <Form className="d-flex">
-                <Form.Control
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  aria-label="Search"
-                />
-                <Button variant="success">Search</Button>
-              </Form>
+              <Nav>
+                <Nav.Link>
+                  <Form className="d-flex">
+                    <Form.Control
+                      type="search"
+                      placeholder="Search"
+                      className="me-2"
+                      aria-label="Search"
+                    />
+                    <Button variant="success">Search</Button>
+                  </Form>
+                </Nav.Link>
+              </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>
