@@ -7,7 +7,6 @@ import { OPEN_CART } from "../../redux/cart/slice";
 //Bootstrap
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -16,7 +15,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Cart from "../cart/index";
 import LoginModal from "../LoginModal";
 
-function Header() {
+function Header({ searchterm, setSearchTerm }) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -76,19 +75,6 @@ function Header() {
                 )}
                 <Nav.Link onClick={handleCartClick}>
                   <Button variant="success">Cart ({productsTotalCount})</Button>
-                </Nav.Link>
-              </Nav>
-              <Nav>
-                <Nav.Link>
-                  <Form className="d-flex">
-                    <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                    />
-                    <Button variant="success">Search</Button>
-                  </Form>
                 </Nav.Link>
               </Nav>
             </Offcanvas.Body>
